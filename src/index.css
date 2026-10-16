@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-obsidian: #000000;
+    --color-console-charcoal: #0d0f12;
+    --color-wire-gray: rgba(255, 255, 255, 0.08);
+    --gradient-aurora: linear-gradient(90deg, #f6d1ac, #f3b5d2, #c7b8f5, #a7eadc, #afcdf6);
+  }
+
+  body {
+    background-color: #000000;
+    color: #fafafa;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Langbase Architectural Blueprint Grid */
+.bg-blueprint-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-blueprint-grid-dense {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+/* Langbase Aurora Spectrum Gradient */
+.aurora-gradient-bg {
+  background: linear-gradient(90deg, #f6d1ac 0%, #f3b5d2 25%, #c7b8f5 50%, #a7eadc 75%, #afcdf6 100%);
+}
+
+.aurora-gradient-text {
+  background: linear-gradient(90deg, #f6d1ac 0%, #f3b5d2 25%, #c7b8f5 50%, #a7eadc 75%, #afcdf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aurora-border-glow {
+  position: relative;
+}
+.aurora-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #f6d1ac, #f3b5d2, #c7b8f5, #a7eadc, #afcdf6);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+.aurora-border-glow:hover::before {
+  opacity: 0.85;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Glass & Glow utilities */
+.glass-console {
+  background: rgba(13, 15, 18, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(18, 21, 27, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Monospace telemetry styles */
+.font-mono-telemetry {
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: -0.02em;
+}
