@@ -15,10 +15,10 @@ export default function Navbar({ onOpenInquiry }) {
   }, []);
 
   const navLinks = [
-    { label: 'Featured Work', href: '#gallery' },
-    { label: 'Pipeline & Stack', href: '#pipeline' },
-    { label: 'Prompt Sandbox', href: '#playground' },
+    { label: 'Home', href: '#home' },
+    { label: 'Selected Works', href: '#gallery' },
     { label: 'About & Services', href: '#about' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (

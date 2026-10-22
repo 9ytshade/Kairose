@@ -6,10 +6,7 @@ import {
   VolumeX, 
   ChevronLeft, 
   ChevronRight, 
-  Terminal, 
-  ArrowRight, 
-  Sparkles,
-  Sliders
+  ArrowRight
 } from 'lucide-react';
 import { CREATOR_INFO, PORTFOLIO_ITEMS } from '../data/portfolioData';
 
@@ -75,7 +72,7 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
   };
 
   return (
-    <section className="relative min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-obsidian overflow-hidden flex flex-col justify-center">
+    <section id="home" className="relative min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-obsidian overflow-hidden flex flex-col justify-center">
       {/* Subtle Aurora Ambient Radiance */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-aurora-glow pointer-events-none blur-3xl opacity-30" />
 
@@ -87,9 +84,6 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-2 border border-white/10 text-xs font-mono text-zinc-300">
               <span className="w-2 h-2 rounded-full bg-zinc-400 animate-pulse" />
               <span className="text-white font-semibold">AI COMMERCIAL ADS CREATOR</span> // KAIROSE REEL DIRECTING
-            </span>
-            <span className="hidden sm:inline-block text-xs font-mono text-zinc-500">
-              5 REEL ROTATION • 3S INTERVAL • 4K DCI
             </span>
           </div>
 
@@ -104,20 +98,20 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
 
         {/* Morphic Two-Tone Headline System */}
         <div className="max-w-4xl mb-10">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[1.05] sm:leading-[1.02]">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-[1.02] uppercase">
             {/* Line 1: White Statement */}
-            <span className="text-white block font-extrabold">
-              Directing synthetic realities.
+            <span className="text-white block font-extrabold tracking-tight">
+              KAIROSE
             </span>
             {/* Line 2: Muted Context Echo with Commercial Ads Creator included */}
-            <span className="text-zinc-500 block font-semibold mt-1">
+            <span className="text-zinc-500 block font-semibold text-2xl sm:text-4xl md:text-5xl normal-case tracking-normal mt-2">
               AI filmmaker, commercial ads creator & visual director.
             </span>
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-fog max-w-2xl font-normal leading-relaxed">
             Crafting viral high-end commercials, luxury brand films, and narrative cinema 
-            at the intersection of diffusion models, optical physics, and artistic direction.
+            with cutting-edge AI and artistic direction.
           </p>
 
           {/* Dual CTAs (Achromatic Pills) */}
@@ -131,11 +125,11 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
             </a>
 
             <button
-              onClick={() => onOpenProject(activeReel)}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-medium bg-surface-1 border border-white/10 text-bone hover:border-white/30 hover:bg-surface-2 transition-all font-mono"
+              onClick={onOpenInquiry}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold bg-surface-1 border border-white/15 text-bone hover:border-white/30 hover:bg-surface-2 transition-all shadow-subtle group"
             >
-              <Terminal className="w-4.5 h-4.5 text-zinc-300" />
-              <span>Inspect Prompt Architecture</span>
+              <span>Initiate Project</span>
+              <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
@@ -161,13 +155,13 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
                   <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
                 </div>
                 <span className="text-xs text-zinc-200 font-semibold tracking-wider ml-1">
-                  REEL {currentIndex + 1} OF {reels.length} // {activeReel.title}
+                  {activeReel.title}
                 </span>
               </div>
 
               {/* Progress & Indicator Pills */}
               <div className="flex items-center gap-3">
-                <div className="hidden sm:flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5">
                   {reels.map((_, idx) => (
                     <button
                       key={idx}
@@ -179,10 +173,6 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
                     />
                   ))}
                 </div>
-
-                <span className="px-2.5 py-1 rounded bg-surface-2 border border-white/15 text-zinc-200 text-xs font-semibold">
-                  {activeReel.badge}
-                </span>
               </div>
             </div>
 
@@ -225,23 +215,15 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
               {/* Floating Bottom Reel Overlays */}
               <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-10">
                 <div className="max-w-xl">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-zinc-200 font-medium">
-                      {activeReel.telemetry.model}
-                    </span>
-                    <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-zinc-300">
-                      SEED: {activeReel.telemetry.seed}
-                    </span>
-                  </div>
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">
                     {activeReel.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-300 line-clamp-1 mt-1 font-light">
-                    {activeReel.telemetry.prompt}
+                  <p className="text-xs sm:text-sm text-zinc-300 mt-1 font-light">
+                    {activeReel.subtitle}
                   </p>
                 </div>
 
-                {/* Player Controls & Inspect Trigger */}
+                {/* Player Controls & Action Button */}
                 <div className="flex items-center gap-2.5">
                   <button
                     onClick={togglePlay}
@@ -262,11 +244,11 @@ export default function Hero({ onOpenProject, onOpenInquiry }) {
                   </button>
 
                   <button
-                    onClick={() => onOpenProject(activeReel)}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white text-obsidian hover:bg-zinc-200 text-xs sm:text-sm font-semibold backdrop-blur-md transition-all active:scale-95 shadow-lg"
+                    onClick={onOpenInquiry}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-obsidian hover:bg-zinc-200 text-xs sm:text-sm font-semibold backdrop-blur-md transition-all active:scale-95 shadow-lg"
                   >
-                    <Terminal className="w-4.5 h-4.5" />
-                    <span>View Prompt Telemetry</span>
+                    <span>Initiate Project</span>
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>

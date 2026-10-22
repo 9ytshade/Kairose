@@ -3,8 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TrustStrip from './components/TrustStrip';
 import Gallery from './components/Gallery';
-import PipelineWorkflow from './components/PipelineWorkflow';
-import PromptPlayground from './components/PromptPlayground';
 import AboutCreator from './components/AboutCreator';
 import InquirySection from './components/InquirySection';
 import Footer from './components/Footer';
@@ -35,12 +33,6 @@ export default function App() {
           onSelectProject={(proj) => setSelectedProject(proj)}
         />
 
-        {/* Generative Pipeline: Seed to Screen */}
-        <PipelineWorkflow />
-
-        {/* Interactive Prompt Engineering Playground */}
-        <PromptPlayground />
-
         {/* About the Director & Commission Packages */}
         <AboutCreator 
           onOpenInquiry={() => setIsInquiryModalOpen(true)}
@@ -53,11 +45,15 @@ export default function App() {
       {/* Console Footer */}
       <Footer />
 
-      {/* Project Telemetry & Cinema Modal */}
+      {/* Cinema Modal */}
       {selectedProject && (
         <ProjectModal 
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
+          onOpenInquiry={() => {
+            setSelectedProject(null);
+            setIsInquiryModalOpen(true);
+          }}
         />
       )}
 

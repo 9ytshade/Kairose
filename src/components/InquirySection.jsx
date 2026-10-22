@@ -194,7 +194,7 @@ export default function InquirySection({ isOpenModal, onCloseModal }) {
 
   // If rendered as page section: uniform bg-obsidian
   return (
-    <section id="inquiry" className="py-24 px-4 sm:px-6 lg:px-8 bg-obsidian border-t border-white/5 relative">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-obsidian border-t border-white/5 relative">
       {content}
     </section>
   );

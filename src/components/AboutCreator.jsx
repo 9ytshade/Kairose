@@ -63,7 +63,7 @@ export default function AboutCreator({ onOpenInquiry }) {
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
-              <span className="text-white block font-extrabold">Sculpting in Latent Space.</span>
+              <span className="text-white block font-extrabold">About Kairose.</span>
               <span className="text-zinc-500 block font-semibold mt-1">
                 Bridging traditional film craft with generative frontier models.
               </span>

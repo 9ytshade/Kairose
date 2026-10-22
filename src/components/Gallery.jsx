@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Terminal, ArrowUpRight, Sparkles, Film, Image as ImageIcon } from 'lucide-react';
+import { ArrowUpRight, Play, Film, Sparkles } from 'lucide-react';
 import { PORTFOLIO_ITEMS } from '../data/portfolioData';
 
 export default function Gallery({ onSelectProject }) {
@@ -61,8 +61,8 @@ export default function Gallery({ onSelectProject }) {
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Gallery Grid - Larger Cards for High Resolution Real Video Playback */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {filteredItems.map((item) => (
             <GalleryCard 
               key={item.id} 
@@ -78,7 +78,7 @@ export default function Gallery({ onSelectProject }) {
         {/* Bottom Metadata */}
         <div className="mt-16 text-center border-t border-white/5 pt-8">
           <p className="text-xs font-mono text-zinc-500">
-            ALL WORKS DIRECTED, PROMPTED & ENGINEERED BY KAIROSE • 2024–2026 ARCHIVE
+            ALL WORKS DIRECTED & PRODUCED BY KAIROSE • 2024–2026 ARCHIVE
           </p>
         </div>
 
@@ -95,10 +95,10 @@ function GalleryCard({ item, onSelect, isHovered, onMouseEnter, onMouseLeave }) 
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onSelect}
-      className="group relative cursor-pointer rounded-2xl overflow-hidden bg-surface-1 border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col shadow-lg hover:shadow-2xl hover:-translate-y-1"
+      className="group relative cursor-pointer rounded-3xl overflow-hidden bg-surface-1 border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col shadow-xl hover:shadow-2xl hover:-translate-y-1.5"
     >
-      {/* Media Canvas */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+      {/* Media Canvas with 16:9 Cinematic Video Display */}
+      <div className="relative aspect-video w-full overflow-hidden bg-black">
         {item.category === 'video' || item.videoUrl ? (
           <video
             ref={videoRef}
@@ -123,56 +123,55 @@ function GalleryCard({ item, onSelect, isHovered, onMouseEnter, onMouseLeave }) 
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
         {/* Floating Top Badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 pointer-events-none">
-          <span className="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-white">
-            {item.telemetry.model.split('+')[0].trim()}
+        <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+          <span className="text-xs font-mono font-medium px-3 py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-white">
+            {item.client}
           </span>
 
-          <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-zinc-300">
+          <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-zinc-300">
             {item.duration}
           </span>
         </div>
 
         {/* Center Hover Action */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
-          <div className="px-5 py-2.5 rounded-full bg-bone text-obsidian text-sm font-semibold flex items-center gap-2 shadow-2xl scale-95 group-hover:scale-100 transition-transform">
-            <Terminal className="w-4.5 h-4.5 text-zinc-900" />
-            <span>Open Cinema Inspector</span>
+          <div className="px-6 py-3 rounded-full bg-bone text-obsidian text-sm font-semibold flex items-center gap-2.5 shadow-2xl scale-95 group-hover:scale-100 transition-transform">
+            <Play className="w-4 h-4 fill-current text-obsidian" />
+            <span>View Project</span>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between text-xs font-mono text-zinc-400">
-          <span className="text-zinc-200 font-medium">{item.client}</span>
+        <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs font-mono text-zinc-400">
+          <span className="text-zinc-200 font-medium">{item.category.toUpperCase()}</span>
           <span className="text-zinc-400">{item.views} VIEWS</span>
         </div>
       </div>
 
       {/* Card Content Footer */}
-      <div className="p-5 flex-1 flex flex-col justify-between bg-surface-1 border-t border-white/5">
+      <div className="p-6 flex-1 flex flex-col justify-between bg-surface-1 border-t border-white/5">
         <div>
-          <div className="flex items-center justify-between gap-2 mb-1.5">
-            <h3 className="text-lg font-bold text-white group-hover:text-bone tracking-tight transition-colors line-clamp-1">
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-bone tracking-tight transition-colors line-clamp-1">
               {item.title}
             </h3>
             <ArrowUpRight className="w-5 h-5 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
           </div>
 
-          <p className="text-xs font-medium text-zinc-400 line-clamp-1 mb-3">
+          <p className="text-sm font-medium text-zinc-400 line-clamp-1 mb-3">
             {item.subtitle}
           </p>
 
-          <p className="text-xs text-zinc-400 font-mono line-clamp-2 leading-relaxed bg-black/50 p-2.5 rounded-lg border border-white/5">
-            <span className="text-zinc-200 mr-1.5 font-bold">&gt;</span>
-            {item.telemetry.prompt}
+          <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2 font-light">
+            {item.overview}
           </p>
         </div>
 
-        {/* Card Telemetry Tags */}
-        <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-400">
+        {/* Card Info Tags (No Prompt / CFG) */}
+        <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-400">
           <span>RATIO: {item.aspectRatio}</span>
-          <span>CFG: {item.telemetry.cfg}</span>
-          <span className="text-zinc-300 font-medium">{item.badge}</span>
+          <span>YEAR: {item.year}</span>
+          <span className="text-zinc-200 font-semibold">{item.badge}</span>
         </div>
       </div>
     </div>
